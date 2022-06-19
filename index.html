@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+      <script src="//unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+      <script src="//unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+      <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+      <script src="./playerMovement.js"></script>
+    </head>
+    <body>
+      <a-scene>
+        <a-assets>
+          <a-assets-item id="model" src="./assets/tryout//dodge_challenger_srt_demon_sdc/scene.gltf"></a-assets-item>
+        </a-assets>
+        <a-entity id="environment" environment="preset:tron;skyType:atmosphere;lighting:spot"></a-entity>  
+        <a-entity light="type:ambient;color:yellow;intensity:0.5"></a-entity>
+
+        <a-entity id="camera-rig" movement-controls="speed: 0.2; constrainToNavMesh: true" position="0 1 2">
+          <!--Camera and Cursor-->
+          <a-entity id="camera" camera position="0 1.6 0" look-controls="pointerLockEnabled: false">
+            <a-entity id="car" gltf-model="#model" 
+              position="0 -4.4 3" rotation="0 180 0" scale="1.5 1.5 1.25"
+              body="type: static; mass: 10; shape: none;" 
+              shape="shape: sphere; radius: 5; offset: 0 3 0;"
+              player-movement>
+            </a-entity>
+            <a-cursor></a-cursor>
+            </a-entity>
+            </a-entity>
+      </a-scene>  
+    </body>
+</html>
